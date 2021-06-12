@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "library_proj"
+version = "0.1.0"
+description = ""
+authors = ["Gustavo Correa <self.gustavocorrea@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.65.2"
+SQLAlchemy = "^1.4.18"
+pydantic = { extras = ["email-validator"], version = "^1.8.2" }
+passlib = { extras = ["bcrypt"], version = "^1.7.4" }
+uvicorn = "^0.14.0"
+aiomysql = { version = "^0.0.21", optional = true }
+aiosqlite = { version = "^0.17.0", optional = true }
+asyncpg = { version = "^0.23.0", optional = true }
+psycopg2 = { version = "^2.8.6", optional = true }
+alembic = "^1.6.5"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+pytest-asyncio = "^0.15.1"
+black = "^21.6b0"
+pylint = "^2.8.3"
+sqlalchemy2-stubs = "^0.0.2-alpha.2"
+
+[tool.poetry.extras]
+sqlite = ["aiosqlite"]
+mysql = ["aiomysql"]
+postgres = ["asyncpg", "psycopg2"]
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+exclude = "./alembic"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
