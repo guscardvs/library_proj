@@ -4,6 +4,8 @@ version = "0.1.0"
 description = ""
 authors = ["Gustavo Correa <self.gustavocorrea@gmail.com>"]
 
+packages = [{ include = "app" }]
+
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.65.2"
@@ -14,8 +16,8 @@ uvicorn = "^0.14.0"
 aiomysql = { version = "^0.0.21", optional = true }
 aiosqlite = { version = "^0.17.0", optional = true }
 asyncpg = { version = "^0.23.0", optional = true }
-psycopg2 = { version = "^2.8.6", optional = true }
 alembic = "^1.6.5"
+psycopg2 = { version = "^2.8.6", optional = true }
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"
@@ -28,6 +30,9 @@ sqlalchemy2-stubs = "^0.0.2-alpha.2"
 sqlite = ["aiosqlite"]
 mysql = ["aiomysql"]
 postgres = ["asyncpg", "psycopg2"]
+
+[tool.poetry.scripts]
+dev = "app.main:main"
 
 [tool.isort]
 profile = "black"
