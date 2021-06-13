@@ -1,4 +1,4 @@
-from database.common.database import DBWrapper, get_driver_uri
+from database.common.database import DBWrapper
 from database.common.entity import Entity
 from database.common.filters import (
     AndFilter,
@@ -7,7 +7,7 @@ from database.common.filters import (
     FilterJoins,
     OrFilter,
 )
-from database.common.functions import get_metadata
+from database.common.functions import get_driver_uri, get_metadata
 from database.common.model_finder import ModelFinder
 from database.common.repository import Repository
 

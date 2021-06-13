@@ -1,5 +1,6 @@
 import importlib
 import inspect
+import sys
 from pathlib import Path
 from typing import Optional
 
@@ -43,7 +44,7 @@ class ModelFinder:
                     self.models[name] = obj
 
     def get_import(self, target: Path):
-        target_str = str(target)
+        target_str = target.as_posix()
         result = (
             target_str[target_str.index(self.root.name) :]
             .replace("/", ".")

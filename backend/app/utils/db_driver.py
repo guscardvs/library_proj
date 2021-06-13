@@ -30,4 +30,4 @@ def driver_parser(val: str):
         import_module(driver)
     except ImportError:
         raise InvalidDriverName(val)
-    return "{db_type}+{driver}".format(val.value, driver)
+    return "{db_type}+{driver}".format(db_type=val.value, driver=driver)

@@ -2,21 +2,10 @@ from contextlib import asynccontextmanager
 from typing import Optional
 
 from core.settings import DB_DRIVER, DB_URI
+from database.common.functions import get_driver_uri
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 from utils.db_driver import DriverOptions
-
-
-def get_driver_uri(*, no_parse: bool, driver: str, uri: str):
-    if no_parse:
-        return f"{driver}://{uri}"
-    db_type, _ = driver.split("+")
-    _options = {
-        DriverOptions.MYSQL.value: "pymysql",
-        DriverOptions.POSTGRES.value: "psycopg2",
-        DriverOptions.SQLITE.value: "sqlite",
-    }
-    return f"{db_type}+{_options[db_type]}://{uri}"
 
 
 class DBWrapper:

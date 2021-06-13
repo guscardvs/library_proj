@@ -40,6 +40,7 @@ def run_migrations_offline():
 
     """
     url = get_driver_uri(no_parse=False, driver=DB_DRIVER, uri=DB_URI)
+    print(url)
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -60,6 +61,7 @@ def run_migrations_online():
     """
     cfg = config.get_section(config.config_ini_section)
     cfg["sqlalchemy.url"] = get_driver_uri(no_parse=False, driver=DB_DRIVER, uri=DB_URI)
+    print(cfg["sqlalchemy.url"])
     connectable = engine_from_config(
         cfg,
         prefix="sqlalchemy.",
