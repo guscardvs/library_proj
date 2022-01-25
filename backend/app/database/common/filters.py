@@ -37,9 +37,7 @@ class FieldFilter(Filter):
             self.value = true() if self.value else false()
 
     def where(self, entity: type[Entity]):
-        if self.related:
-            return self.related_attr(entity)
-        return self.attr(entity)
+        return self.related_attr(entity) if self.related else self.attr(entity)
 
     def related_attr(self, entity: type[Entity]):
         related_entity = self._attr(entity, self.related)
